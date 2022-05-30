@@ -26,6 +26,8 @@
   --GalleryItemColor: #212121;
   --future-BackgroundColor-beforeElenent: #f5f4fa;
   --clients-logoColor: #afb1b8;
+  --modal-closeButton: #000000;
+  --modal-closeButton-borderColor: rgba(0,0,0,0.1);
 
   --TransitionDuration: 250ms;
 }
@@ -550,6 +552,51 @@ h1, h2, h3, h4, h5, h6, li, p {
   fill:var(--FirstMainColor);
 }
 /*#endregion*/
+/*#region modal*/
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.modal {
+  position: relative;
+  opacity: 1;
+  width: 528px;
+  height: 581px;
+  margin-top: 221px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 4px;
+  background-color: var(--FirstMainColor);
+}
+.modal-close_button {
+  display: flex;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  background-color: var(--ButtonMainColor);
+  border-radius: 50%;
+  border: 1px solid var(--modal-closeButton-borderColor);
+  justify-items: center;
+  align-items: center;
+}
+.modal-close_icon {
+  fill: var(--modal-closeButton);
+}
+.modal-close_button:hover {
+  background-color: var(--FirstMainColor);
+}
+/*#endregion modal*/
 /*#endregion index*/
 
 /*------------------------------------------------*/
