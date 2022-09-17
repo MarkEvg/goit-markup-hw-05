@@ -102,15 +102,17 @@ h1, h2, h3, h4, h5, h6, li, p {
   letter-spacing: 0.06em;
   cursor: pointer;
 }
-.button-selected {
-  background-color: var(--button-BackgroundColor);
-  color: var(--ButtonMainColor);
-}
+
+.filter-button.button-selected,
 .button:hover,
 .button:focus {
   color: var(--ButtonMainColor);
   background-color: var(--button-BackgroundColor);
 }
+/*.filter-button.button-selected {
+  color: red;
+  background-color: blue;
+}*/
 .button:active {
   color: var(--ButtonMainColor);
   background-color: var(--button-BackgroundColor);
@@ -232,6 +234,9 @@ h1, h2, h3, h4, h5, h6, li, p {
 .header-contacts-icon {
   margin-right: 10px;
   fill: var(--ContactColor);
+  transition-property: fill;
+  transition-duration: var(--TransitionDuration);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .header-contact-item {
   margin-right: 50px;
@@ -352,13 +357,14 @@ h1, h2, h3, h4, h5, h6, li, p {
   margin-right: 0;
 }
 .about-item-description {
+  display:inline-flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 70px;
-  padding-top: 27px;
-  padding-bottom: 27px;
   text-align: center;
   font-weight: 700;
   font-size: 14px;
@@ -403,8 +409,8 @@ h1, h2, h3, h4, h5, h6, li, p {
   margin-right: 0;
 }
 .team-list-item-header {
-  /*margin-top: 30px;*/
-  margin-bottom: 10px;
+
++  margin-bottom: 10px;
   padding: 0;
   font-weight: 500;
   font-size: 16px;
@@ -562,13 +568,10 @@ h1, h2, h3, h4, h5, h6, li, p {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
 }
-.backdrop.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-}
 .modal {
   position: relative;
   opacity: 1;
+  scale: 1;
   width: 528px;
   height: 581px;
   margin-top: 221px;
@@ -576,6 +579,15 @@ h1, h2, h3, h4, h5, h6, li, p {
   margin-right: auto;
   border-radius: 4px;
   background-color: var(--FirstMainColor);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+  opacity: 0;
+  scale: 0;
+  pointer-events: none;
 }
 .modal-close_button {
   display: flex;
@@ -595,6 +607,9 @@ h1, h2, h3, h4, h5, h6, li, p {
 }
 .modal-close_button:hover {
   background-color: var(--FirstMainColor);
+}
+.modal-close_button:active .modal {
+  scale: 0;
 }
 /*#endregion modal*/
 /*#endregion index*/
@@ -701,3 +716,34 @@ h1, h2, h3, h4, h5, h6, li, p {
 /*#endregion gallery-grid*/
 
 /*#endregion Portfolio*/
+/*#region Animation*/
+@keyframes modalAnimationGrow {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+  0% {
+    transform: scale(0);
+  }
+}
+@keyframes modalAnimationShrink {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+  0% {
+    transform: scale(1);
+  }
+}
+@keyframes fadeWindow {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
